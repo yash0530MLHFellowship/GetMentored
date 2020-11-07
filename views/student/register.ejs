@@ -1,0 +1,80 @@
+<% include ../layouts/header %>
+
+<div class="container mt-3 text-dark">
+    <div class="row">
+        <div class="col-md-1 col-lg-2 col-xl-3"></div>
+        <div class="col-md-10 col-lg-8 col-xl-6">
+            <form action="/student/register" method="POST" enctype="multipart/form-data">
+                <div class="heading-2 text-center mt-3">STUDENT REGISTER</div>
+                <% include ../layouts/messages %>
+                <div class="form-group">
+                    <label class="required" for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name"
+                        value="<%= typeof name != 'undefined' ? name : '' %>">
+                </div>
+                <div class="form-group">
+                    <label class="required" for="email">Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="Enter email" name="email"
+                        value="<%= typeof email != 'undefined' ? email : '' %>">
+                </div>
+                <div class="form-group">
+                    <label class="required" for="contactNum">Contact Number</label>
+                    <input type="text" class="form-control" id="contactNum" placeholder="Enter contact number"
+                        name="contactNum" value="<%= typeof contactNum != 'undefined' ? contactNum : '' %>">
+                </div>
+                <div class="form-group">
+                    <label for="file">Image</label>
+                    <br>
+                    <input type="file" id="file" name="file" value="<%= typeof file != 'undefined' ? file : '' %>">
+                </div>
+                <div class="form-group">
+                    <label class="required" for="dob">Date Of Birth</label>
+                    <input type="text" autocomplete="off" class="form-control" id="dob" name="dob"
+                        placeholder="Date of Birth">
+                </div>
+                <div class="form-group">
+                    <label class="required" for="city">City</label>
+                    <input type="city" class="form-control" id="city" placeholder="Enter city" name="city"
+                        value="<%= typeof city != 'undefined' ? city : '' %>">
+                </div>
+                <div class="form-group">
+                    <label class="required" for="highestEdQual">Highest Education Qualification</label>
+                    <input type="highestEdQual" class="form-control" id="highestEdQual"
+                        placeholder="Highest Education Qualification" name="highestEdQual"
+                        value="<%= typeof highestEdQual != 'undefined' ? highestEdQual : '' %>">
+                </div>
+                <div class="form-group"> <label for="workExp">Previous Work Experience</label>
+                    <textarea type="text" class="form-control" rows="5" id="workExp" placeholder="Enter Work Experience"
+                        name="workExp"><%= typeof workExp != 'undefined' ? workExp.trim() : '' %></textarea>
+                </div>
+                <div class="form-group"> <label for="volunteerExp">Previous Volunteer Experience</label>
+                    <textarea type="text" class="form-control" rows="5" id="volunteerExp"
+                        placeholder="Enter Volunteer Experience"
+                        name="volunteerExp"><%= typeof volunteerExp != 'undefined' ? volunteerExp.trim() : '' %></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="awardsNRecog">Awards and Recognitions</label>
+                    <textarea type="text" class="form-control" rows="5" id="awardsNRecog"
+                        placeholder="Enter Awards and Recognitions"
+                        name="awardsNRecog"><%= typeof awardsNRecog != 'undefined' ? awardsNRecog.trim() : '' %></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="required" for="password">Password (min. 8 characters)</label>
+                    <input type="password" class="form-control mb-1" id="password1" placeholder="Enter password"
+                        name="password1">
+                    <label class="required" for="password">Confirm Password</label>
+                    <input type="password" class="form-control" id="password2" placeholder="Confirm password"
+                        name="password2">
+                </div>
+                <div class="mb-3"> By registering, you agree to GetMentored's <a href="/terms_of_use">Terms of Use</a> and <a href="/privacy_policy">Privacy Policy</a>.</div>
+                <a href="/student/login" class="btn btn-outline-danger mr-2 pl-4 pr-4 ">Login</a>
+                <button type="submit" class="btn btn-outline-dark pl-4 pr-4">Register</button>
+            </form>
+        </div>
+        <div class="col-md-1 col-lg-2 col-xl-3"></div>
+    </div>
+</div>
+
+<% include ../layouts/footer %>
+
+<script src="/scripts/dob.js"></script>

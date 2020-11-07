@@ -1,0 +1,38 @@
+<% include ../layouts/header %>
+
+<div class="container mt-3 text-dark">
+    <div class="row">
+        <div class="col-md-1 col-lg-2 col-xl-3"></div>
+        <div class="col-md-10 col-lg-8 col-xl-6">
+            <form action="/community/<%= _id %>" method="POST" enctype="multipart/form-data">
+                <div class="heading-2 text-center mt-3">EDIT POST</div>
+                <% include ../layouts/messages %>
+                <div class="form-group">
+                    <label class="required" for="title">Title</label>
+                    <input type="text" class="form-control" id="title" placeholder="Enter title" name="title"
+                        value="<%= typeof title != 'undefined' ? title : '' %>">
+                </div>
+                <div class="form-group">
+                    <label class="required" for="city">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="Enter city" name="city"
+                        value="<%= typeof city != 'undefined' ? city : '' %>">
+                </div>
+                <!-- <div class="form-group">
+                    <label for="file">Image</label>
+                    <br>
+                    <img class="text-center my-3" src='/community/get_image/<%= _id %>' onerror="this.style.display='none'" height="250">
+                    <br>
+                    <input type="file" id="file" name="file"
+                        value="<%= typeof file != 'undefined' ? file : '' %>">
+                </div> -->
+                <div class="form-group">
+                    <label class="required" for="text">Post</label>
+                    <textarea rows="5" type="text" class="form-control" id="text" placeholder="Write post" name="text"><%= text %></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-dark pl-4 pr-4">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ../layouts/footer %>

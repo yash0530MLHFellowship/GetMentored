@@ -1,0 +1,50 @@
+<% include ../layouts/header %>
+
+<!-- page header -->
+<div class="conatiner">
+    <% include ../layouts/messages %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 d-none d-md-flex p-1">
+                <div class="text-center golden-head">
+                    HOW TO<br /> MAKE MY<br /> PROFILE<br /> UNIQUE ?
+                </div>
+            </div>
+            <div class="d-md-none col-12 p-1">
+                <div class="text-center golden-head-mobile">
+                    HOW TO<br /> MAKE MY<br /> PROFILE<br /> UNIQUE ?
+                </div>
+            </div>
+            <div class="col-lg-6 col-12 p-1 text-center" style="color: #444;">
+                <div class="right-content">VOLUNTEER</div>
+                <div class="right-content">Volunteering for a social cause will help your profile get noticed by the recruiters.<br /><br />Be a part of the community development and growth by working for a cause that you strongly support.<br /><br />Volunteering will increase your perspective and give you a sense of responsibility that will serve you a long way. This gives you an added benefit of sharpening your soft skills. Through this , you understand the value of time, communication and responsibility.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center container">
+    <div class="row">
+        <% count = 0; %>
+        <% volunteership_opportunities.forEach(opportunity => { %>
+            <% if (opportunity.openings_left > 0) { %>
+                <% count += 1 %>
+                <div class="col-12 col-md-6 col-xl-3 mt-4">
+                    <div class="card card-hoverable">
+                        <img class="card-img-top" src='/volunteership_opportunities/get_image/<%= opportunity._id %>' style="border-bottom:#ddd solid 1px;">
+                        <div class="card-body">
+                            <div class="card-title"><%= opportunity.short_description.substring(0, 75) %>...</div>
+                            <a href="/volunteership_opportunities/show/<%= opportunity._id %>" class="btn btn-outline-dark">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% }); %>
+        <% if(count==0) { %>
+            <div class="para-2 p-5">All opportunities are currently occupied.</div>
+        <% } %>
+    </div>
+</div>
+
+
+<% include ../layouts/footer %>

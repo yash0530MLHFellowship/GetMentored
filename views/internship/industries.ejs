@@ -1,0 +1,35 @@
+<% include ../layouts/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 d-none d-md-flex p-1">
+            <div class="text-center golden-head">
+                TRAIN<br /> ME FOR MY<br /> CAREER
+            </div>
+        </div>
+        <div class="d-md-none col-12 p-1">
+            <div class="text-center golden-head-mobile">
+                TRAIN<br /> ME FOR MY<br /> CAREER
+            </div>
+        </div>
+        
+        <div class="col-lg-6 col-12 p-1 text-center" style="color: #444;">
+            <div class="right-content">INTERNSHIPS</div>
+            <div class="right-content">Work on real industry projects, practice with professionals and learn how to play the game from the pros.<br /><br />Internships will increase your spectrum of industry knowledge by helping you gain hands on experience.<br /><br />This will add more power to your learning curve.<br />You can choose those assignments that can help you tap on your true potential and sharpen your skills with real practice.</div>
+
+            <div class="dropdown">
+                <button class="golden-button" data-toggle="dropdown" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Get Internships
+                </button>
+                
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <% industries.forEach(industry => { %>
+                        <a href="/internship_opportunities/show/<%= industry.name %>" class="dropdown-item"><%= industry.name %></a>    
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../layouts/footer %>

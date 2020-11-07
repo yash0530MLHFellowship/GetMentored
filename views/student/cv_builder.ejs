@@ -1,0 +1,50 @@
+<% include ../layouts/header %>
+
+<!-- page header -->
+<div class="conatiner">
+    <% include ../layouts/messages %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 d-none d-md-flex p-1">
+                <div class="text-center golden-head">
+                    HOW TO<br /> MAKE THE<br /> RECRUITER<br /> CALL ME?
+                </div>
+            </div>
+            <div class="d-md-none col-12 p-1">
+                    <div class="text-center golden-head-mobile">
+                        HOW TO<br /> MAKE THE<br /> RECRUITER<br /> CALL ME?
+                    </div>
+                </div>
+            <div class="col-lg-6 col-12 p-1 text-center" style="color: #444;">
+                <div class="right-content">Build A Professional CV & LinkedIn Profile</div>
+                <div class="right-content">Let your profile highlight your capabilities to make you the chosen candidate.<br /><br />We will help you build an eye-catching profile to grab the attention of the head hunters.</div>
+                <div class="pt-5">
+                    <% if (!user || user.userType == 'ADMIN') { %>
+                        <a href="/student/recieve/cv_builder" class="golden-button" >Build Your CV</a>
+                    <% } else { %>
+                        <% console.log(user); %>
+                        <% let found = false; let status = -1; %>
+                        <% user.cv_builder.forEach(cv => { %>
+                            <% status = cv.status; found = true; %>
+                        <% }) %>
+                        <% if (!found) { %>
+                            <a href="/student/recieve/cv_builder" class="golden-button" >Build Your CV</a>
+                        <% } else { %>
+                            <% if (status == 0) { %>
+                                <button class="mt-3 btn" class="golden-button" disabled>Request Sent</button>
+                                <div class="mt-2"><b>Get ready to be the chosen candidate.</b> Your request has been sent. We shall
+                                    get in touch with you shortly.</div>
+                            <% } else if (status == 1) { %>
+                                <button class="btn" class="golden-button" disabled>Request Acknowledged</button> 
+                            <% } else { %>
+                                <a href="/student/recieve/cv_builder" class="golden-button" >Build Your CV</a>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../layouts/footer %>

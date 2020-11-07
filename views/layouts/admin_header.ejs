@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/styles/app.css"></link>
+    <title>GetMentored</title>
+</head>
+<body>
+    <div class="heading-3" style="padding: 30px;">GET MENTORED</div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+            <ul class="navbar-nav  mr-auto">
+                <a class="nav-link dark-gray" href="/admin/home">Admin Home</a>
+                <a class="nav-link dark-gray" href="/student/home">Home</a>
+                <a class="nav-link dark-gray" href="/about_us">About</a>
+                <a class="nav-link dark-gray" href="/mentor/show">Find A Mentor</a>
+                <a class="nav-link dark-gray" href="/student/cv_builder">Profile Builder</a>
+                <a class="nav-link dark-gray" href="/internship_opportunities/show">Intern</a>
+                <a class="nav-link dark-gray" href="/volunteership_opportunities/show">Volunteer</a>
+                <a class="nav-link dark-gray" href="/community">My Hub</a>
+            </ul>
+            <% if (user) { %>
+                <a class="nav-link active" href="/admin/home"><%= user.name %></a>
+                <a class="nav-link" href="/admin/logout">Logout</a>
+            <% } else { %>
+                <a class="nav-link" href="/admin/login">Login</a>
+                <a class="nav-link" href="/admin/register">Register</a>
+            <% } %>
+            </ul>
+        </div>
+    </nav>
+
+<div class="body-content"></div>

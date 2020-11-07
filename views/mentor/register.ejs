@@ -1,0 +1,68 @@
+<!-- <% include ../layouts/admin_header %> -->
+<% include ../layouts/header %>
+
+<div class="container mt-3 text-dark">
+    <div class="row">
+        <div class="col-md-1 col-lg-2 col-xl-3"></div>
+        <div class="col-md-10 col-lg-8 col-xl-6">
+            <form action="/mentor/register" method="POST" enctype="multipart/form-data">
+                <div class="heading-2 text-center mt-3">MENTOR REGISTER</div>
+                <% include ../layouts/messages %>
+                <div class="form-group">
+                    <label class="required" for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name"
+                        value="<%= typeof name != 'undefined' ? name : '' %>">
+                </div>
+                <div class="form-group">
+                    <label class="required" for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email"
+                        value="<%= typeof email != 'undefined' ? email : '' %>">
+                </div>
+                <div class="form-group">
+                    <label class="required" for="contactNum">Contact Number</label>
+                    <input type="text" class="form-control" id="contactNum" placeholder="Enter contact number" name="contactNum"
+                        value="<%= typeof contactNum != 'undefined' ? contactNum : '' %>">
+                </div>
+                <div class="form-group">
+                    <label for="file">Image</label>
+                    <br>
+                    <input type="file" id="file" name="file"
+                        value="<%= typeof file != 'undefined' ? file : '' %>">
+                </div>
+                <div class="form-group">
+                    <label class="required" for="city">City</label>
+                    <input type="city" class="form-control" id="city" placeholder="Enter city" name="city"
+                        value="<%= typeof city != 'undefined' ? city : '' %>">
+                </div>
+                <div class="form-group">
+                    <label class="required" for="quote">Quote</label>
+                    <input type="text" class="form-control" id="quote" placeholder="Enter quote by mentor"
+                        name="quote" value="<%= typeof quote != 'undefined' ? quote : '' %>">
+                </div>
+                <div class="form-group">
+                    <label class="required" for="workExp">Work Experience</label>
+                    <textarea type="text" class="form-control" rows="5" id="workExp" placeholder="Enter Work Experience" 
+                    name="workExp"><%= typeof workExp != 'undefined' ? workExp.trim() : '' %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="required" for="industry">Industry</label>
+                    <select type="industry" class="form-control" id="industry" name="industry">
+                        <% if(typeof industries != 'undefined' && industries != '') { %>
+                            <% industries.forEach(indus => { %>
+                                <% if(typeof industry != 'undefined' && industry != '' && indus.name==industry) { %>
+                                    <option value="<%= indus.name %>" selected="selected"><%= indus.name %></option>
+                                <% } else { %>
+                                    <option value="<%= indus.name %>"><%= indus.name %></option>
+                                <% } %>
+                            <% }); %>
+                        <% } %>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-outline-dark pl-4 pr-4">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ../layouts/footer %>

@@ -1,0 +1,47 @@
+<% include ../layouts/header %>
+
+<div class="container mt-3 text-dark ">
+
+    <!-- <div class="row text-center">
+        <div class="col-md-1 col-lg-2 col-xl-3"></div>
+        <div class="col-md-10 col-lg-8 col-xl-6">
+            <div class="heading-2 text-center mt-3">COMMUNITY HUB</div>
+            <hr>
+            <a class="btn btn-outline-dark" href="community/new">CREATE POST</a>
+            <hr>
+        </div>
+        <div class="col-md-1 col-lg-2 col-xl-3"></div>
+    </div> -->
+
+    <div class="row">
+            <div class="col-md-6 d-none d-md-flex p-1">
+                <div class="text-center golden-head">
+                    MY<br /> STUDENT<br /> HUB
+                </div>
+            </div>
+            <div class="d-md-none col-12 p-1">
+                <div class="text-center golden-head-mobile">
+                    MY<br /> STUDENT<br /> HUB
+                </div>
+            </div>
+            
+            <div class="col-lg-6 col-12 p-1 text-center" style="color: #444;">
+                <div class="right-content">NETWORK AND BUILD</div>
+                <div class="right-content">Increase your professional network by interacting and connecting with students from various industries.<br />You can explore the perks of the booming gig economy by collaborating on a project with other ambitious students.</div>
+    
+                <div class="pt-5">
+                    <a href="community/new" class="golden-button">Create New Post</a>
+                </div>
+            </div>
+        </div>
+
+
+
+    <div class="row pt-5" id="posts-pagination"></div>
+
+    <center><div class="loading" id="loading"></div></center>
+</div>
+
+<% include ../layouts/footer %>
+
+<script src="scripts/community/home.js"></script>

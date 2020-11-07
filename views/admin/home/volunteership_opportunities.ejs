@@ -1,0 +1,78 @@
+<% include ../../layouts/header %>
+
+<div class="container">
+  <div class="heading-1 text-center mt-3">Admin</div>
+  <% include ../../layouts/messages %>
+  <ul class="nav nav-tabs nav-justified">
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/cv">CV Builder</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/community">Community</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/internships">Internships</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/internship_opportunities">Internship Opportunities</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/mentors">Mentors</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/mentorships">Mentorships</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/students">Students</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/volunteerships">Volunteerships</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active heading-4" href="/admin/home/volunteership_opportunities">Volunteership
+        Opportunities</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="text-center">
+      <a href="/volunteership_opportunities/register" class="btn heading-3 btn-outline-danger m-3 px-4 ">
+        Add a new Volunteership Opportunity
+      </a>
+    </div>
+    <% if (volunteership_opportunities) { %>
+    <table class="table table-bordered table-text-centered table-no-padding">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Org Name</th>
+          <th scope="col">Profile</th>
+          <th scope="col">Short Desc.</th>
+          <th scope="col">Duration</th>
+          <th scope="col">Cities</th>
+          <th scope="col">Openings Left</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% volunteership_opportunities.forEach(opportunity => { %>
+        <tr>
+          <td><%= opportunity.org_name %></td>
+          <td><%= opportunity.profile %></td>
+          <td><%= opportunity.short_description %></td>
+          <td><%= opportunity.duration %></td>
+          <td><%= opportunity.cities %></td>
+          <td><%= opportunity.openings_left %></td>
+          <td><a href="/volunteership_opportunities/edit/<%= opportunity._id %>"
+              class="btn btn-outline-primary px-4">Edit</a></td>
+          <td><a class="btn btn-outline-danger"
+              href="/volunteership_opportunities/delete/<%= opportunity._id %>">Delete</a></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <% } %>
+  </div>
+</div>
+
+<% include ../../layouts/footer %>

@@ -1,0 +1,59 @@
+<% include ../../layouts/header %>
+
+<div class="container">
+  <div class="heading-1 text-center mt-3">Admin</div>
+  <% include ../../layouts/messages %>
+  <ul class="nav nav-tabs nav-justified">
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/cv">CV Builder</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/community">Community</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/internships">Internships</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/internship_opportunities">Internship Opportunities</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/mentors">Mentors</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/mentorships">Mentorships</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active heading-4" href="/admin/home/students">Students</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/volunteerships">Volunteerships</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/volunteership_opportunities">Volunteership Opportunities</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="text-center container">
+      <div class="row">
+        <% if (students.length != 0) { %>
+        <% students.forEach(student => { %>
+        <div class="col-12 col-md-6 col-xl-3 mt-4">
+          <div class="card">
+            <img class="card-img-top" src='/student/get_image/<%= student._id %>'>
+            <div class="card-body">
+              <p class="card-text"><%= student.name %></p>
+              <p class="card-text">
+                <a href="/student/profile/<%= student.id %>" class="btn btn-outline-dark">View Details</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include ../../layouts/footer %>

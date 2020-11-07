@@ -1,0 +1,19 @@
+<% include ../layouts/header %>
+
+<div class="container mt-3 text-dark">
+    <div class="row">
+        <div class="col-md-1 col-lg-2 col-xl-3"></div>
+        <div class="col-md-10 col-lg-8 col-xl-6">
+            <form action="/mentor/review/edit/<%= mentor_id %>/<%= review_id %>" method="POST">
+                <div class="heading-2 text-center mt-3">EDIT REVIEW</div>
+                <% include ../layouts/messages %>
+                <div class="form-group">
+                    <textarea rows="5" type="text" class="form-control mt-4" id="text" placeholder="Enter Review" name="text" required><%= text %></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-dark pl-4 pr-4">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ../layouts/footer %>

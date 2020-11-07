@@ -1,0 +1,145 @@
+<% include ./layouts/header %>
+
+<div class="container">
+    <div class="text-center golden-head-mobile" style="font-size: 2.5rem !important;">
+        WHY GET MENTORED
+    </div>
+    <br />
+    <div class="para-1 text-center">Solution for Success</div>
+    <br />
+    <div class="para-2 text-center">We believe in equipping ourselves to stand apart from the crowd.​</div>
+    <div class="para-2 text-center">Each of our services can be availed at the click of a button.</div>
+    <br />
+    <div class="para-2 text-center"><strong class="bold">What’s even better?</strong> For every service you avail, a
+        member of our team will personally assist you from the beginning to the end of the process.
+    </div>
+
+    <div class="faqs">
+        <div class="text-center golden-head-mobile" style="font-size: 2rem !important;">FAQs</div>
+        <button class="mt-3 question">How do I go about the mentorship process?</button>
+        <div class="panel">
+            <p class="answer">You select the industry of your choice and the mentor of your liking. <br>
+                After applying for a mentorship session, a member of the team will get in touch with you and the
+                respective mentor. Our team will assign a dedicated coordinator to make sure you are assisted at every
+                step of the process.<br>
+                An appointment gets scheduled within 1 week. The status of your appointment will be visible on your
+                login profile.
+            </p>
+        </div>
+        <button class="mt-3 question">I need help in image building. I want to learn how to formally conduct myself when
+            meeting with professionals and influential people.</button>
+        <div class="panel">
+            <p class="answer">
+                You can choose our corporate trainers who will help you to make a professional and lasting impression.
+            </p>
+        </div>
+        <button class="mt-3 question">I have an interview that I want to ace. Can you recommend a mentor to me who will
+            prepare me for it?</button>
+        <div class="panel">
+            <p class="answer">
+                Yes, our mentors will sincerely help you. Their valuable tips and notes will help you nail the interview
+                and
+                leave a positive impression.
+            </p>
+        </div>
+        <button class="mt-3 question">How will the volunteering service done by me help my profile?</button>
+        <div class="panel">
+            <p class="answer">
+                A lot of universities and companies do look for community development services on the candidate’s
+                profile. A
+                lot of recruiters do value this service and at times, consider it at par with actual work experience.
+            </p>
+        </div>
+        <button class="mt-3 question">I want a new CV and LinkedIn profile built from scratch. Can you make it?</button>
+        <div class="panel">
+            <p class="answer">
+                Sure, please go to the respective page and select the service you wish to avail. Our team member will
+                get in
+                touch with you from there.
+            </p>
+        </div>
+        <button class="mt-3 question">I want to know more about a certain industry and the various long- term jobs that
+            are in it. Can the mentors
+            help in giving information?</button>
+        <div class="panel">
+            <p class="answer">
+                Yes. Make sure you are ready with your questions for the mentors. They will help you to their best.
+            </p>
+        </div>
+    </div>
+
+    <div class="mt-5 pt-3" style="display: flex; justify-content: space-around">
+        <a class="btn btn-custom btn-lg mr-1" href="/assets/pdfs/Terms Of Use & Privacy Policy for Users.pdf">
+            Terms Of Use & Privacy Policy for Users
+        </a>
+        <a class="btn btn-custom btn-lg ml-1" href="/assets/pdfs/Terms Of Use & Privacy Policy For Mentors.pdf">
+            Terms Of Use & Privacy Policy for Mentors
+        </a>
+    </div>
+
+</div>
+
+<style>
+    .answer {
+        padding-top: 6px;
+    }
+
+    .question {
+        background-color: #eee;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        transition: 0.4s;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #b38a4c;
+    }
+
+    .active,
+    .question:hover {
+        background-color: #ccc;
+    }
+
+    .question:after {
+        content: '\002B';
+        color: #777;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+
+    .active:after {
+        content: "\2212";
+    }
+
+    .panel {
+        padding: 0px 18px;
+        background-color: #eeeeee;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+</style>
+
+<script>
+    var acc = document.getElementsByClassName("question");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+<% include ./layouts/footer %>
+
+<link href="/styles/button.css" type="text/css" rel="stylesheet">

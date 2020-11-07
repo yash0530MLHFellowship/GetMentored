@@ -1,0 +1,33 @@
+<% include ../layouts/header %>
+
+<!-- page header -->
+<div class="conatiner">
+    <% include ../layouts/messages %>
+</div>
+<div class="text-center golden-head-small mb-5">
+    <%= industries[index].name.toUpperCase() %>
+</div>
+
+<div class="text-center container">
+    <div class="row">
+        <% if (mentors.length != 0) { %>
+            <% mentors.forEach(mentor => { %>
+                <div class="col-12 col-md-6 col-xl-3 mt-4">
+                    <div class="card card-hoverable">
+                        <img class="card-img-top" src='/mentor/get_image/<%= mentor._id %>' style="border-bottom:#ddd solid 1px;">
+                        <div class="card-body">
+                            <div class="heading-3 card-title"><%= mentor.name %></div>
+                            <p class="card-text"><%= mentor.quote.substring(0, 75) %>...</p>
+                            <a href="/mentor/show/<%= mentor.industry %>/<%= mentor._id %>" class="btn btn-outline-dark">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <div class="para-2">All our mentors are booked for this period.</div>
+        <% } %>
+    </div>
+</div>
+
+
+<% include ../layouts/footer %>

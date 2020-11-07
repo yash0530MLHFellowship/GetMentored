@@ -1,0 +1,19 @@
+- [ ] Redirect fix
+- [ ] Can we redirect to proper previous page, after login page? (onBackPressed?)
+
+- [ ] Post edit buffer message
+
+- [ ] Title of each page
+
+- [ ] Rename in post, cv, etc. if user name changes
+- [ ] Set proper date value in forms
+
+- [ ] Reviews
+- [ ] Admin can add GetMentored reviews
+
+- [ ] Treat user _id as key and not the email id
+
+
+ Forgot password option must be visible with login (Will require SMTP or OTP)
+ 1 mentor can be from 2 industries, have that option available. (Can't do that)
+ Send incorrect message on wrong id password (Can't do that)

@@ -1,0 +1,70 @@
+<% include ../../layouts/header %>
+
+<div class="container">
+  <div class="heading-1 text-center mt-3">Admin</div>
+  <% include ../../layouts/messages %>
+  <ul class="nav nav-tabs nav-justified">
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/cv">CV Builder</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/community">Community</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/internships">Internships</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/internship_opportunities">Internship Opportunities</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/mentors">Mentors</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active heading-4" href="/admin/home/mentorships">Mentorships</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/students">Students</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/volunteerships">Volunteerships</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/volunteership_opportunities">Volunteership Opportunities</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <table class="table table-bordered table-text-centered table-no-padding mt-3">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" colspan="2">Student</th>
+          <th scope="col" colspan="2">Mentor</th>
+          <th scope="col">Request Created</th>
+          <th scope="col">Update Status</th>
+        </tr>
+      </thead>
+      <% if (mentorships) { %>
+      <tbody>
+        <% mentorships.forEach(mentorship => { %>
+        <tr>
+          <td><%= mentorship.student.name %></td>
+          <td><a class="btn btn-outline-primary" href="/student/profile/<%= mentorship.student.id %>">View</a></td>
+          <td><%= mentorship.mentor.name %></td>
+          <td><a class="btn btn-outline-primary" href="/mentor/show/admin_mode/<%= mentorship.mentor.id %>">View</a>
+          </td>
+          <td><%= new Date(mentorship.created).toDateString() %></td>
+          <% if (mentorship.status == 0) { %>
+          <td><a class="btn btn-outline-primary" href="/admin/accept/mentorship/<%= mentorship.id %>/1">Accept
+              Request</a></td>
+          <% } else if (mentorship.status == 1) { %>
+          <td><button class="btn btn-outline-success" disabled>Accepted</button></td>
+          <% } %>
+        </tr>
+        <% }); %>
+      </tbody>
+      <% } %>
+    </table>
+  </div>
+</div>
+
+<% include ../../layouts/footer %>

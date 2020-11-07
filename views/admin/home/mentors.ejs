@@ -1,0 +1,77 @@
+<% include ../../layouts/header %>
+
+<div class="container px-0 mx-5">
+  <div class="heading-1 text-center mt-3">Admin</div>
+  <% include ../../layouts/messages %>
+  <ul class="nav nav-tabs nav-justified">
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/cv">CV Builder</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/community">Community</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/internships">Internships</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/internship_opportunities">Internship Opportunities</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active heading-4" href="/admin/home/mentors">Mentors</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/mentorships">Mentorships</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/students">Students</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/volunteerships">Volunteerships</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link heading-4" href="/admin/home/volunteership_opportunities">Volunteership Opportunities</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="text-center">
+      <a href="/mentor/register" class="btn heading-3 btn-outline-danger m-3 px-4 ">
+        Add a new Mentor
+      </a>
+    </div>
+    <% if (mentors) { %>
+    <table class="table table-bordered table-text-centered table-no-padding">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Contact</th>
+          <!-- <th scope="col">Image</th> -->
+          <th scope="col">Quote</th>
+          <th scope="col">City</th>
+          <th scope="col">Industry</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% mentors.forEach(mentor => { %>
+        <tr>
+          <td><%= mentor.name %></td>
+          <td><%= mentor.email %></td>
+          <td><%= mentor.contactNum %></td>
+          <!-- <td>Image</td> -->
+          <td><%= mentor.quote %></td>
+          <td><%= mentor.city %></td>
+          <td><%= mentor.industry %></td>
+          <td><a href="/mentor/edit/<%= mentor._id %>" class="btn btn-outline-primary px-4">Edit</a></td>
+          <td><a href="/mentor/delete/<%= mentor._id %>" class="btn btn-outline-danger">Delete</a></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <% } %>
+  </div>
+</div>
+
+<% include ../../layouts/footer %>

@@ -1,0 +1,161 @@
+<% include ../layouts/header %>
+
+<div class="container">
+
+    <div class="text-center">
+        <% include ../layouts/messages %>
+    </div>
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-lg-3">
+            <div class="card">
+                <img class="card-img-top" src='/student/get_image/<%= student._id %>'>
+                <div class="card-body">
+                    <p class="card-text"><%= student.name %></p>
+                    <% if (user && student && user._id.equals(student._id)) { %>
+                    <a href="/student/edit" class="btn btn-outline-dark">Edit Profile</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="heading-2 mt-5 mt-lg-0"><%= student.name %></div>
+            <div class="para-2 mb-4"><i class="fas fa-map-marker-alt"></i> <%= student.city %></div>
+
+            <div class="heading-3">Email</div>
+            <div class="para-2 mb-4"><%= student.email %></div>
+
+            <div class="heading-3">Contact Number</div>
+            <div class="para-2 mb-4"><%= student.contactNum %></div>
+
+            <div class="heading-3">Date of Birth</div>
+            <div class="para-3 mb-4"><%= new Date(student.dob).toDateString() %></div>
+
+            <div class="heading-3">Highest Education Qualification</div>
+            <div class="para-3 mb-4"><%= student.highestEdQual %></div>
+
+            <div class="heading-3">Awards and Recognitions</div>
+            <div class="multiline para-3 mb-4"><%= student.awardsNRecog %></div>
+
+            <div class="heading-3">Work Experience</div>
+            <div class="multiline para-3 mb-4"><%= student.workExp %></div>
+
+            <div class="heading-3">Volunteer Experience</div>
+            <div class="multiline para-3 mb-4"><%= student.volunteerExp %></div>
+        </div>
+        <% if (user && student && user._id.equals(student._id)) { %>
+        <table class="table table-bordered table-text-centered table-no-padding mt-3">
+            <caption style="caption-side: top;" class="text-center">Mentorships</caption>
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="2">Mentor</th>
+                    <th scope="col">Request Created</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <% if (student.mentorships) { %>
+            <tbody>
+                <% student.mentorships.forEach(mentorship => { %>
+                <tr>
+                    <td><%= mentorship.mentor.name %></td>
+                    <td><a class="btn btn-outline-primary"
+                            href="/mentor/show/industry/<%= mentorship.mentor.id %>">View</a></td>
+                    <td><%= new Date(mentorship.created).toDateString() %></td>
+                    <% if (mentorship.status == 0) { %>
+                    <td>Pending</td>
+                    <% } else if (mentorship.status == 1) { %>
+                    <td>Accepted</td>
+                    <% } %>
+                </tr>
+                <% }); %>
+            </tbody>
+            <% } %>
+        </table>
+
+        <table class="table table-bordered table-text-centered table-no-padding mt-3">
+            <caption style="caption-side: top;" class="text-center">CV Building</caption>
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Request Created</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <% if (student.cv_builder) { %>
+            <tbody>
+                <% student.cv_builder.forEach(cv => { %>
+                <tr>
+                    <td><%= new Date(cv.created).toDateString() %></td>
+                    <% if (cv.status == 0) { %>
+                    <td>Pending</td>
+                    <% } else if (cv.status == 1) { %>
+                    <td>Accepted</td>
+                    <% } %>
+                </tr>
+                <% }); %>
+            </tbody>
+            <% } %>
+        </table>
+
+        <table class="table table-bordered table-text-centered table-no-padding mt-3">
+                <caption style="caption-side: top;" class="text-center">Volunteerships</caption>
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="2">Opportunity</th>
+                    <th scope="col">Request Created</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <% if (student.volunteerships) { %>
+            <tbody>
+                <% student.volunteerships.forEach(volunteership => { %>
+                <tr>
+                    <td><%= volunteership.volunteership_opportunity.short_description %></td>
+                    <td><a class="btn btn-outline-primary"
+                            href="/volunteership_opportunities/show/<%= volunteership.volunteership_opportunity.id %>">View</a>
+                    </td>
+                    <td><%= new Date(volunteership.created).toDateString() %></td>
+                    <!-- TODO make dynamic -->
+                    <% if (volunteership.status == 0) { %>
+                    <td>Pending</td>
+                    <% } else if (volunteership.status == 1) { %>
+                    <td>Accepted</td>
+                    <% } %>
+                </tr>
+                <% }); %>
+            </tbody>
+            <% } %>
+        </table>
+
+        <table class="table table-bordered table-text-centered table-no-padding mt-3">
+                <caption style="caption-side: top;" class="text-center">Internships</caption>
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="2">Opportunity</th>
+                    <th scope="col">Request Created</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <% if (student.internships) { %>
+            <tbody>
+                <% student.internships.forEach(internship => { %>
+                <tr>
+                    <td><%= internship.internship_opportunity.short_description %></td>
+                    <td><a class="btn btn-outline-primary"
+                            href="/internship_opportunities/show/admin_mode/<%= internship.internship_opportunity.id %>">View</a>
+                    </td>
+                    <td><%= new Date(internship.created).toDateString() %></td>
+                    <!-- TODO make dynamic -->
+                    <% if (internship.status == 0) { %>
+                    <td>Pending</td>
+                    <% } else if (internship.status == 1) { %>
+                    <td>Accepted</td>
+                    <% } %>
+                </tr>
+                <% }); %>
+            </tbody>
+            <% } %>
+        </table>
+        <% } %>
+    </div>
+</div>
+
+<% include ../layouts/footer %>

@@ -1,0 +1,35 @@
+{
+  "name": "get-mentored",
+  "version": "1.0.0",
+  "description": "a website for getting mentorship",
+  "main": "app.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "forever": "^1.0.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.11",
+    "multer": "^1.4.1",
+    "nodemon": "^1.18.10",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yash0530/GetMentored.git"
+  },
+  "author": "yash, aliabbas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yash0530/GetMentored/issues"
+  }
+}

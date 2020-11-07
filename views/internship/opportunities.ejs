@@ -1,0 +1,36 @@
+<% include ../layouts/header %>
+
+<!-- page header -->
+<div class="conatiner">
+    <% include ../layouts/messages %>
+</div>
+<div class="text-center golden-head-small mb-5">
+    <%= industries[index].name.toUpperCase() %>
+</div>
+
+
+<div class="text-center container">
+    <div class="row">
+        <% count = 0; %>
+        <% internship_opportunities.forEach(opportunity => { %>
+            <% if (opportunity.openings_left > 0) { %>
+                <% count += 1 %>
+                <div class="col-12 col-md-6 col-xl-3 mt-4">
+                    <div class="card card-hoverable">
+                        <img class="card-img-top" src='/internship_opportunities/get_image/<%= opportunity._id %>'>
+                        <div class="card-body">
+                            <div class="heading-3 card-title"><%= opportunity.short_description %></div>
+                            <a href="/internship_opportunities/show/<%= opportunity.industry %>/<%= opportunity._id %>" class="btn btn-outline-dark">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% }); %>
+        <% if(count == 0) { %>
+            <div class="para-2">Sorry, Currently no Internship Opportunities are available for this Industry.</div>
+        <% } %>
+    </div>
+</div>
+
+
+<% include ../layouts/footer %>

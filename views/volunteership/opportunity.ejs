@@ -1,0 +1,62 @@
+<% include ../layouts/header %>
+
+<div class="container">
+    <div class="row" style="margin-top: 75px;">
+        <% include ../layouts/messages %>
+        <div class="col-lg-3">
+            <div class="card">
+                <img class="card-img-top" src='/volunteership_opportunities/get_image/<%= opportunity._id %>'>
+                <div class="card-body">
+                    <p class="card-text"><%= opportunity.short_description %></p>
+                    <% if (!user || user.userType == 'ADMIN') { %>
+                        <% if(opportunity.openings_left>0) { %>
+                            <a href="/student/recieve/volunteership/<%= opportunity._id %>" class="btn btn-outline-dark">Apply</a>
+                        <% } else { %>
+                            <button class="btn btn-outline-secondary" disabled>Not available</button>
+                        <% } %>
+                    <% } else { %>
+                        <% console.log(user); %>
+                        <% let found = false; let status = -1; %>
+                        <% user.volunteerships.forEach(volunteership => { %>
+                            <% if (volunteership.volunteership_opportunity.id.equals(opportunity._id)) { %>
+                                <% found = true; %>
+                                <% status = volunteership.status; %>
+                            <% } %>
+                        <% }) %>
+                        <% if (!found) { %>
+                            <% if(opportunity.openings_left > 0) { %>
+                                <a href="/student/recieve/volunteership/<%= opportunity._id %>" class="btn btn-outline-dark">Apply</a>
+                            <% } else { %>
+                                <button class="btn btn-outline-secondary" disabled>Not available</button>
+                            <% } %>
+                        <% } else { %>
+                            <% if (status == 0) { %>
+                                <button class="mt-3 btn btn-outline-primary" disabled>Request Sent</button>
+                                <div class="mt-2"><b>You are about to make a positive change in this world.</b> Your application has
+                                    been acknowledged and a coordinator shall get in touch with you shortly.</div>
+                            <% } else if (status == 1) { %>
+                                <button class="btn btn-outline-success" disabled>Request Acknowledged</button> 
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="heading-1 mt-5 mt-lg-0"><%= opportunity.org_name %></div>
+            <div class="para-2 mb-4"><i class="fas fa-map-marker-alt"></i> <%= opportunity.cities %></div>
+            
+            <div class="heading-3">Profile</div>
+            <div class="para-3 mb-3"><%= opportunity.profile %></div>
+            
+            <div class="heading-3">Description</div>
+            <div class="multiline para-3 mb-3"><%= opportunity.description %></div>
+
+            <div class="heading-3">Duration</div>
+            <div class="para-3 mb-3"><%= opportunity.duration %></div>
+
+        </div>
+    </div>
+</div>
+
+<% include ../layouts/footer %>
